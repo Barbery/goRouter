@@ -1,4 +1,4 @@
-package routes
+package goRouter
 
 import (
 	"fmt"
