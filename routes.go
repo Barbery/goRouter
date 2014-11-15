@@ -126,8 +126,6 @@ func (m *Mux) AddRoute(pattern string, handler http.HandlerFunc, method string) 
 		handler: handler,
 		params:  params,
 	})
-
-	// fmt.Println(prefixUrl, m.routes, m.routes[method])
 }
 
 func (m *Mux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -161,12 +159,11 @@ func (m *Mux) match(requestPath string, r *http.Request) (http.HandlerFunc, bool
 					continue
 				}
 
-				//检查是否需要匹配参数
+				//whether need to match the parameters
 				if len(route.params) > 0 {
 					matches := route.pattern.FindStringSubmatch(requestPath)
 					if len(matches) < 2 || len(matches[1:]) != len(route.params) {
-						fmt.Println(requestPath, route.params, route.pattern)
-						panic("参数不匹配")
+						// panic("Parameters do not match")
 						return nil, false
 					}
 
@@ -176,7 +173,6 @@ func (m *Mux) match(requestPath string, r *http.Request) (http.HandlerFunc, bool
 					}
 
 					//reassemble query params and add to RawQuery
-					//重组query params 和添加到RawQuery
 					r.URL.RawQuery = url.Values(values).Encode() + "&" + r.URL.RawQuery
 				}
 
