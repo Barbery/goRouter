@@ -64,10 +64,10 @@ func putUser(w http.ResponseWriter, r *http.Request) {
 
 If you want to match query params, you should add ':' prefix, like
 ```go
-# It will match below request url:
-# GET /user/123
-# GET /user/123/
-# slash at the end of the url is optional
+// It will match below request url:
+// GET /user/123
+// GET /user/123/
+// slash at the end of the url is optional
 mux.Get(`/user/:id(\d+)`, getUser)
 ```
 It will match the :id param and it is restricted to numeric type.
