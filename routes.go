@@ -149,9 +149,8 @@ func (m *Mux) match(requestPath string, r *http.Request) (http.HandlerFunc, bool
 		return nil, false
 	}
 
-	i := len(paths)
 	var path string
-	for ; i > 0; i-- {
+	for i := len(paths); i > 0; i-- {
 		path = strings.Join(paths[:i], `/`)
 		if routes, ok := m.routes[r.Method][path]; ok {
 			for _, route := range routes {
