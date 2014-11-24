@@ -1,4 +1,4 @@
-goRouter
+goRouter[![Build Status](https://travis-ci.org/Barbery/goRouter.svg)](https://travis-ci.org/Barbery/goRouter)
 ========
 goRouter is a very flexible and lightweight router with hight performance. It is very suitable for small project or some little web service.
 
